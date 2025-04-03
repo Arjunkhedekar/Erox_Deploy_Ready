@@ -1,0 +1,119 @@
+.action-small-modal {
+   position: relative;
+   top: 50%;
+   left: 50%;
+   width: 35%;
+   height: 75%;
+   background-color: #c2f0ff;
+   transform: translate(-145%, -66%);
+}
+
+.action-small-modal > img {
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   cursor: pointer;
+}
+
+.modal-container-inner {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   gap: 30px;
+   width: 80%;
+   height: 80%;
+   margin: 60px auto 0 auto;
+   background-color: #c2f0ff;
+}
+
+.modal-heading h2 {
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 24px;
+   font-weight: 500;
+}
+
+.modal-content {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   height: 70%;
+   padding: 30px;
+   border-radius: 15px;
+   box-shadow: 7px 9px 18px 0 rgba(0, 0, 0, 0.25);
+   background-color: #f2fcff;
+}
+
+.modal-footer {
+   display: flex;
+   justify-content: space-around;
+   height: 10%;
+}
+
+.modal-footer > button {
+   min-width: 35%;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 8px;
+   background-color: #0092e4;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 18px;
+   font-weight: 600;
+   color: #ffffff;
+}
+
+/* Modal Styles Specific to OrderModal */
+.modal-content > h2 {
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 24px;
+   font-weight: 500;
+   text-align: center;
+}
+
+/* Modal Styles Specific to UplaodModal */
+.modal-content .toggle-button-group {
+   flex-direction: column;
+   justify-content: center;
+   gap: 16px;
+   margin: auto;
+}
+
+.modal-content .toggle-button {
+   width: 100%;
+   padding: unset;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 24px;
+   font-weight: 500;
+}
+
+.modal-content .toggle-button:hover {
+   background-color: #c2f0ff;
+   color: #152636;
+}
+
+.modal-content .toggle-button.selected-toggle-button:hover {
+   background-color: #0092e4;
+   color: #ffffff;
+}
+
+
+
+@media screen and (max-width: 768px) {
+   .action-small-modal {
+      top: 0%;
+      left: 0%;
+      width: 80%;
+      transform: translate(0%, 0%);
+   }
+   .action-small-modal > img {
+      top: 10px;
+      right: 10px;
+   }
+   .modal-container-inner {
+      height: 85%;
+      margin: 60px auto 0 auto;
+   }
+   .modal-footer {
+      display: flex;
+      gap: 10px;
+   }
+}

@@ -1,0 +1,133 @@
+#navbar {
+   position: sticky;
+   top: 0;
+   z-index: 1000;
+   padding: 10px 20px 5px 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   transition: background-color 0.3s;
+}
+
+.navbar-content{
+   display: flex;
+   align-items: center;
+   gap: 50px;
+}
+
+#navbar.scrolled {
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   background-color: #e4f9ff;
+   transition: background-color 0.3s;
+}
+
+#navbar-right {
+   display: flex;
+   align-items: center;
+   gap: 3rem;
+}
+
+#navbar-menu {
+   display: flex;
+   gap: 3.5rem;
+   list-style: none;
+}
+
+#navbar-menu li {
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+}
+
+#navbar-menu #active-navbar-link {
+   padding-bottom: 2px;
+   border-bottom: 3px solid #00c2ff;
+}
+
+#navbar-btn > button {
+   padding: 10px 30px;
+   border: none;
+   border-radius: 10px;
+   background-color: #00c2ff;
+   color: #ffffff;
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 18px;
+   font-weight: 600;
+}
+
+/* Add these styles to your existing Navbar.css */
+
+.hamburger {
+   display: none;
+   cursor: pointer;
+   padding: 10px;
+ }
+ 
+ .bar {
+   display: block;
+   width: 25px;
+   height: 3px;
+   margin: 5px auto;
+   background-color: #000;
+   transition: all 0.3s ease-in-out;
+ }
+ 
+ @media (max-width: 768px) {
+   .hamburger {
+     display: block;
+   }
+
+   .navbar-content{
+      gap: 20px;
+   }
+
+   #navbar-right {
+     position: fixed;
+     left: -100%;
+     top: 70px;
+     gap: 0;
+     flex-direction: column;
+     background-color: white;
+     width: 100%;
+     text-align: center;
+     transition: 0.3s;
+     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+   }
+
+   #navbar-menu li {
+      font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+   }
+
+   #navbar-menu {
+      display: flex;
+      margin: 1rem;
+   }
+ 
+   #navbar-right.open {
+     left: 0;
+   }
+ 
+   #navbar-menu {
+     flex-direction: column;
+     padding: 20px 0;
+   }
+ 
+   #navbar-menu li {
+     margin: 0;
+   }
+ 
+   /* Hamburger Animation */
+   .bar.open:nth-child(1) {
+     transform: translateY(8px) rotate(45deg);
+   }
+ 
+   .bar.open:nth-child(2) {
+     opacity: 0;
+   }
+ 
+   .bar.open:nth-child(3) {
+     transform: translateY(-8px) rotate(-45deg);
+   }
+ }

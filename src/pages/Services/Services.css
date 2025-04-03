@@ -1,0 +1,158 @@
+#services-banner {
+    display: flex;
+    justify-content: space-between;
+    gap: 7%;
+    padding: 8% 7%;
+    background-color: #aae8fc;
+}
+
+#services-banner-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    height: 100%;
+}
+
+#services-banner-left h1 {
+    font-family: Montserrat;
+    font-size: 70px;
+    font-weight: 700;
+}
+
+#services-banner-left h3 {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#discover-services {
+    width: 75%;
+    margin-top: 20%;
+}
+
+#discover-services button {
+    width: 100%;
+    padding: 14px 12px;
+    border: none;
+    border-radius: 38px;
+    background-color: #00c2ff;
+    font-family: Inter;
+    font-size: 26px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+#services-features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 8% 7%;
+}
+
+.service-feature {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15%;
+    width: 100%;
+    padding: 0 0 60px 150px;
+    border-bottom: 1px solid #000000;
+}
+
+.service-feature img {
+    width: 10%;
+    margin-top: 30px;
+}
+
+.service-feature .feature-info {
+    width: 60%;
+}
+
+.service-feature h2 {
+    font-family: Inter;
+    font-size: 32px;
+    font-weight: 600;
+    color: #00c2ff;
+}
+
+.service-feature p {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+.service-feature .feature-info span {
+    margin-left: 12px;
+    text-decoration: underline;
+    font-family: Inter;
+    font-size: 22px;
+    font-weight: 600;
+    color: #9821e0;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    #services-banner {
+        flex-direction: column-reverse;
+        gap: 7%;
+        padding: 5% 3%;
+    }
+
+    #services-banner-left {
+        margin-top: 40px;
+        gap: 10px;
+        align-items: center;
+    }
+
+    #services-banner-left h1 {
+        font-family: Montserrat;
+        font-size: 60px;
+        font-weight: 700;
+    }
+
+    #services-banner-left h3 {
+        font-family: Poppins;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    #discover-services {
+        width: 75%;
+        margin: 10% 0 20% 0;
+    }
+
+    #discover-services button {
+        padding: 20px 10px;
+    }
+
+    .service-feature {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15%;
+        width: 100%;
+        padding: 0 0 60px 0;
+        border-bottom: 1px solid #000000;
+    }
+
+    .service-feature img {
+        width: 40%;
+        margin-bottom: 40px;
+    }
+
+    .service-feature .feature-info {
+        width: 100%;
+    }
+
+    .service-feature h2 {
+        text-align: center;
+    }
+
+    .service-feature p {
+        font-size: 20px;
+    }
+}

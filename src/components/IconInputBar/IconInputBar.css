@@ -1,0 +1,33 @@
+.icon-input-bar {
+   position: relative;
+   width: 70%;
+   height: 50px;
+   margin: 0 auto;
+}
+
+.icon-input-bar input {
+   width: 100%;
+   height: inherit;
+   padding-right: 50px;
+   padding-left: 20px;
+   border: none;
+   border-radius: inherit;
+}
+
+.icon-input-bar input:focus {
+   outline: none;
+}
+
+.icon-input-bar input::placeholder {
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+   color: #858585;
+}
+
+.icon-input-bar img {
+   position: absolute;
+   top: 50%;
+   right: 15px;
+   transform: translateY(-50%);
+}

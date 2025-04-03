@@ -1,0 +1,207 @@
+.print-settings {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   align-content: center;
+   height: 100%;
+   width: 100%;
+   border-radius: 15px;
+   box-shadow: 10px 10px 19px rgba(0, 0, 0, 0.3);
+   background-color: #f2fcff;
+}
+
+.print-settings .block-divider-line {
+   height: 100%;
+}
+
+.print-settings-block {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   padding: 35px;
+}
+
+.print-settings-block:nth-of-type(1) {
+   border-top-left-radius: 15px;
+   border-bottom-left-radius: 15px;
+}
+
+.print-settings-block:nth-of-type(2) {
+   border-top-right-radius: 15px;
+   border-bottom-right-radius: 15px;
+}
+
+.print-settings-block h3 {
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 20px;
+   font-weight: 600;
+   color: #152636;
+}
+
+.toggle-button-group {
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   justify-content: center;
+   width: 100%;
+}
+
+.toggle-button {
+   width: 100%;
+   padding: 10px 12px;
+   background-color: #c2f0ff;
+   border: 0.1px solid #87e2ff;
+   border-radius: 8px;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 14px;
+   font-weight: 500;
+   color: #152636;
+}
+
+.toggle-button:hover {
+   background-color: #62cfff;
+   color: #ffffff;
+}
+
+.toggle-button.selected-toggle-button {
+   background-color: #0092e4;
+   color: #ffffff;
+}
+
+.copies-counter {
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   justify-content: space-between;
+   align-items: center;
+   width: 60%;
+   height: 100%;
+   padding: 5px;
+   background-color: #c2f0ff;
+   border-radius: 10px;
+}
+
+.copies-counter button {
+   width: 40px;
+   height: 40px;
+   background-color: #114eed;
+   border: none;
+   border-radius: 50%;
+   color: white;
+   font-size: 40px;
+   line-height: 20px;
+}
+
+.copies-counter button:hover {
+   background-color: #0d3f9f;
+}
+
+.copies-counter button:first-child {
+   padding-bottom: 6px;
+}
+
+.copies-counter button:last-child {
+   padding-top: 3px;
+}
+
+.copies-counter input {
+   width: 45px;
+   padding: 0 5px;
+   background-color: #e5f7fd;
+   border: none;
+   text-align: center;
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 22px;
+   font-weight: 400;
+   color: #4a4a4a;
+}
+
+.copies-counter input:enabled {
+   border: none;
+   outline: none;
+}
+
+.print-settings-block:last-child > .toggle-button {
+   width: 60%;
+   height: 100%;
+   font-size: 22px;
+}
+
+.pages-to-print-dropdown {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 5px;
+   width: 100%;
+}
+
+.pages-to-print-dropdown button {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+}
+
+.pages-to-print-dropdown button:hover {
+   background-color: #c2f0ff;
+   color: #152636;
+}
+
+.pages-to-print-dropdown > button > img {
+   transition: transform 0.3s ease;
+}
+
+.pages-to-print-dropdown > button > img.open {
+   transform: rotate(-180deg);
+}
+
+.pages-to-print-dropdown > .dropdown-menu {
+   position: absolute;
+   top: 110%;
+   z-index: 1;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   gap: 4px;
+   width: inherit;
+   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+   background-color: #ffffff;
+   transition: height 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item {
+   padding: 12px 16px;
+   border-radius: 10px;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+   cursor: pointer;
+   list-style: none;
+   transition: all 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+   background-color: #1baddc;
+   color: white;
+}
+
+
+@media screen and (max-width: 768px) {
+   .print-settings {
+      width: 92%;
+      margin: 0 auto;
+   }
+   .copies-counter {
+      width: 90%;
+      padding: 8px;
+   }
+   .print-settings-block {
+      padding: 35px 10px 25px 10px;
+   }
+}

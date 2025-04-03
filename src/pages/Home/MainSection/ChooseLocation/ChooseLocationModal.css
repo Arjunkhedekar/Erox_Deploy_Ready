@@ -1,0 +1,78 @@
+.location-modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 35%;
+   padding: 20px;
+   background-color: #f2fcff;
+}
+
+.location-modal > img {
+   cursor: pointer;
+}
+
+.location-options {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   width: 100%;
+   margin: 60px auto;
+}
+
+.location-options .icon-input-bar input {
+   box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
+   font-family: Inter;
+   font-size: 16px;
+}
+
+.location-options .icon-input-bar input::placeholder {
+   font-family: Inter;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.location-options-divider {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+   width: 60%;
+}
+
+.location-options-divider div {
+   width: 100%;
+   height: 1px;
+   background-color: #00c2ff;
+}
+
+.location-options-divider span {
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 12px;
+   font-weight: 500;
+}
+
+.gps-location-button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 15px;
+   width: 70%;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 4px;
+   background-color: #00c2ff;
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+   color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+   .location-modal {
+      width: 80%;
+   }
+   
+}

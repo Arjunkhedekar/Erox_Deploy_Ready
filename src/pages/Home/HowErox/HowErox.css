@@ -1,0 +1,111 @@
+#how-erox-section {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   gap: 50px;
+   width: 85%;
+   height: 210vh;
+   margin: 50px auto;
+   padding: 50px;
+   border-radius: 100px;
+   background-color: #0092e4;
+}
+
+#how-erox-section h1 {
+   margin-bottom: 30px;
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 50px;
+   font-weight: 800;
+   color: #ffffff;
+   text-align: center;
+}
+
+#how-erox-section > :nth-child(2),
+#how-erox-section > :nth-child(3),
+#how-erox-section > :nth-child(4),
+#how-erox-section > :nth-child(5) {
+   position: absolute;
+   z-index: 1;
+   width: 34%;
+}
+
+
+
+#how-erox-section > :nth-child(2) {
+   top: 13%;
+   left: 32%;
+}
+
+#how-erox-section > :nth-child(3) {
+   top: 34%;
+   left: 35%;
+}
+
+#how-erox-section > :nth-child(4) {
+   top: 56%;
+   left: 30%;
+}
+
+#how-erox-section > :nth-child(5) {
+   top: 84%;
+   left: 33%;
+}
+
+#how-erox-circle-big {
+   width: 4%;
+   position: absolute;
+   top: 6.9%;
+   left: 18.5%;
+   z-index: 0;
+}
+
+#how-erox-svg-line {
+   position: absolute;
+   top: 10%;
+   left: 6%;
+   z-index: 0;
+}
+
+@media screen and (max-width: 768px) {
+   #how-erox-section {
+      height: auto;
+      width: 92%;
+      margin: 0 auto;
+      padding: 50px 30px 50px 30px;
+
+   }
+   #how-erox-section h1 {
+      margin-bottom: 10px;
+      font-size: 40px;
+   }
+
+   #how-erox-section > :nth-child(2),
+   #how-erox-section > :nth-child(3),
+   #how-erox-section > :nth-child(4),
+   #how-erox-section > :nth-child(5) {
+      width: 70%;
+      position: relative;
+      top: 0;
+      left: 0;
+      
+   }
+   #how-erox-section > :nth-child(2) {
+      top: 0%;
+      left: 0%;
+   }
+   
+   #how-erox-section > :nth-child(3) {
+      top: 0%;
+      left: 35%;
+   }
+   
+   #how-erox-section > :nth-child(4) {
+      top: 0%;
+      left: 0%;
+   }
+   
+   #how-erox-section > :nth-child(5) {
+      top: 0%;
+      left: 35%;
+   }
+}

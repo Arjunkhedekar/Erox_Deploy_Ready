@@ -1,0 +1,157 @@
+.settings-big-modal {
+   position: relative;
+   top: 50%;
+   left: 50%;
+   display: flex;
+   flex-direction: column;
+   gap: 35px;
+   width: 70%;
+   height: 85%;
+   padding: 30px 40px 20px 40px;
+   background-color: #c2f0ff;
+   transform: translate(-72%, -60%);
+}
+
+.settings-big-modal > img {
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   cursor: pointer;
+}
+
+.settings-big-modal > h2 {
+   font-family: Montserrat, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 24px;
+   font-weight: 500;
+   color: #152636;
+}
+
+.settings-big-modal #settings-big-modal-inner {
+   display: grid;
+   grid-template-rows: 1fr 10fr 2fr;
+   grid-template-columns: 2fr 4fr;
+   grid-row-gap: 10px;
+   grid-column-gap: 30px;
+   width: 100%;
+   height: 100%;
+}
+
+#settings-big-modal-inner > .preview-files-list {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   width: 100%;
+   height: 100%;
+   padding: 5px;
+   background-color: #e6f9ff;
+}
+
+.preview-files-list > .preview-files-list-item {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   height: 40px;
+   padding: 0 12px;
+   border-radius: 10px;
+   background-color: #ffffff;
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+   cursor: pointer;
+}
+
+.preview-files-list > .preview-files-list-item.selected {
+   background-color: #6ee0ff;
+}
+
+#settings-big-modal-inner > .preview-files-buttons {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#settings-big-modal-inner > .preview-files-buttons > button {
+   width: 40%;
+   padding: 8px 10px;
+   border: none;
+   border-radius: 15px;
+   background-color: #0092e4;
+   color: #fff;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 18px;
+   font-weight: 600;
+}
+
+#settings-big-modal-inner > .preview-files-header h3,
+#settings-big-modal-inner > .settings-dialog-header > h3 {
+   font-family: Montserrat, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 20px;
+   font-weight: 500;
+   color: #152636;
+}
+
+#settings-big-modal-inner > .settings-dialog {
+   width: 100%;
+   align-self: center;
+}
+
+#settings-big-modal-inner > .settings-dialog .dropdown-item {
+   padding: 8px 16px;
+   font-size: 14px;
+}
+
+#settings-big-modal-inner > .settings-dialog-buttons {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+}
+
+#settings-big-modal-inner > .settings-dialog-buttons > button {
+   width: 20%;
+   padding: 8px 10px;
+   border: none;
+   border-radius: 15px;
+   background-color: #0092e4;
+   color: #fff;
+   font-family: Poppins, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 18px;
+   font-weight: 600;
+}
+
+/* .preview-content {
+   position: relative;
+   width: 100%;
+   height: 80%;
+   background-color: #ffffff;
+}
+
+.preview-content .preview-button {
+   position: absolute;
+   cursor: pointer;
+}
+
+.preview-button.resize {
+   bottom: 22%;
+   left: 2%;
+}
+
+.preview-button.zoom-in {
+   bottom: 12%;
+   left: 2%;
+}
+
+.preview-button.zoom-out {
+   bottom: 2%;
+   left: 2%;
+}
+
+.preview-button.previous {
+   bottom: -10%;
+   left: 35%;
+}
+
+.preview-button.next {
+   bottom: -10%;
+   left: 55%;
+} */

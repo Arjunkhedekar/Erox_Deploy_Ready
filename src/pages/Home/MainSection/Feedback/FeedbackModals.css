@@ -1,0 +1,72 @@
+/*--------------------Feedback----------------------------*/
+.feedback {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 300px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .feedback h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .feedback .stars {
+    margin-bottom: 16px;
+  }
+  
+  .feedback .star {
+    cursor: pointer;
+    font-size: 24px;
+    color: gray;
+    transition: color 0.2s;
+  }
+  
+  .feedback .star.selected {
+    color: gold;
+  }
+  
+  .feedback button {
+    margin: 4px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .feedback button:hover {
+    background-color: #0056b3;
+  }
+  
+  .feedback button:active {
+    background-color: #00408d;
+  }
+  
+  .feedback button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  }
+  
+  .feedback button:last-child {
+    background-color: #6c757d;
+  }
+  
+  .feedback button:last-child:hover {
+    background-color: #5a6268;
+  }
+  
+  .feedback button:last-child:active {
+    background-color: #4e555b;
+  }
+  
+  /*----------------------------------------------------------------------------------*/
+  

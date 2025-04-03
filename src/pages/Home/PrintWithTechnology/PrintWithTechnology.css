@@ -1,0 +1,84 @@
+#print-with-technology-section {
+   position: relative;
+   width: 100%;
+   height: 30vw;
+   margin-bottom: 70px;
+}
+
+#print-with-technology-section #man-taking-prints {
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 1;
+}
+
+#print-with-technology-section #paperplane-with-path {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-45%, -45%);
+   z-index: 2;
+}
+
+#print-with-technology-section #man-sending-prints {
+   position: absolute;
+   right: 0;
+   top: 25%;
+   z-index: 1;
+}
+
+#print-with-technology-section h1 {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   z-index: 3;
+   background-color: #f2fcff;
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 40px;
+   font-weight: 700;
+   transform: translate(-50%, -105%);
+}
+
+#print-with-technology-section h1 span {
+   color: #00c2ff;
+}
+
+@media screen and (max-width: 768px) {
+   #print-with-technology-section h1 {
+      font-size: 30px;
+      top: 40%;
+      left: 60%;
+   }
+}
+
+
+@media screen and (max-width: 1000px) {
+   #print-with-technology-section {
+      height: 80vh;
+   }
+   
+   #print-with-technology-section #paperplane-with-path {
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      width: 90%;
+      transform: translate(-45%, -45%);
+      z-index: 2;
+   }
+
+   #print-with-technology-section #man-sending-prints {
+      top: 65%;
+   }
+
+   #print-with-technology-section #paperplane-with-path {
+      rotate: 45deg;
+      top: 78%;
+      left: 20%;
+   }
+
+   #print-with-technology-section h1 {
+      top: 70%;
+      left: 50%;
+      font-size: 45px;
+   }
+}

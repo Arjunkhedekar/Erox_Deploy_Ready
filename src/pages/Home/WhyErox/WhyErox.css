@@ -1,0 +1,50 @@
+#why-erox-section {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 200px auto 100px auto;
+   padding: 20px;
+   gap: 50px;
+}
+
+#why-erox-section h1 {
+   font-family: Inter, Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 50px;
+   font-weight: 700;
+   color: #1b1b1b;
+}
+
+#why-erox-section h1 span {
+   color: #0092e4;
+}
+
+#why-erox-items {
+   display: grid;
+   width: 80%;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 50px;
+}
+
+#home-blob-whyerox {
+   position: absolute;
+   top: 45%;
+   left: 0%;
+   z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+   #home-blob-whyerox {
+      width: 400px;
+      
+   }
+   #why-erox-section h1 {
+      font-size: 40px;
+   }
+   #why-erox-items {
+      width: 92%;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 50px;
+   }
+}
