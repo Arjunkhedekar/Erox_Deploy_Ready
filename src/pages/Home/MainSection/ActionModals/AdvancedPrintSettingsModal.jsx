@@ -6,6 +6,7 @@ import {
     disableBodyScroll,
     enableBodyScroll,
 } from "../../../../utils/modalUtils";
+import PreviewPDFModal from "./PreviewPDFModal";
 
 const AdvancedPrintSettingsModal = ({
     toggleModal,
@@ -16,6 +17,7 @@ const AdvancedPrintSettingsModal = ({
     getEffectiveMetadata,
 }) => {
     const [selectedFile, setSelectedFile] = useState(0);
+    const [showPreview, setShowPreview] = useState(false);
 
     useEffect(() => {
         disableBodyScroll();
@@ -27,6 +29,18 @@ const AdvancedPrintSettingsModal = ({
     const currentMetadata = getEffectiveMetadata(selectedFile);
     const updateCurrentFileMetadata = (updates) => {
         updateFileMetadata(selectedFile, updates);
+    };
+
+    const handlePreviewClick = () => {
+        if (fileData.length > 0) {
+            const file = fileData[selectedFile].file;
+            if (file.type === "application/pdf") {
+                const fileUrl = URL.createObjectURL(file);
+                setShowPreview(true);
+            } else {
+                alert("Only PDF files can be previewed");
+            }
+        }
     };
 
     return (
@@ -65,7 +79,12 @@ const AdvancedPrintSettingsModal = ({
                         )}
                     </div>
                     <div className="preview-files-buttons bottom-left-container">
-                        <button>Preview</button>
+                        <button 
+                            onClick={handlePreviewClick}
+                            disabled={fileData.length === 0}
+                        >
+                            Preview
+                        </button>
                     </div>
 
                     <div className="settings-dialog-header top-right-container">
@@ -88,6 +107,13 @@ const AdvancedPrintSettingsModal = ({
                     </div>
                 </div>
             </div>
+            {showPreview && (
+                <PreviewPDFModal
+                    toggleModal={() => setShowPreview(false)}
+                    fileUrl={URL.createObjectURL(fileData[selectedFile].file)}
+                    fileName={fileData[selectedFile].file.name}
+                />
+            )}
         </div>
     );
 };
