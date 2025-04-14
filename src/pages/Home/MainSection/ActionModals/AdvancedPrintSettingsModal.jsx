@@ -56,9 +56,7 @@ const AdvancedPrintSettingsModal = ({
                 />
                 <h2>Settings Dialog</h2>
                 <div id="settings-big-modal-inner">
-                    <div className="preview-files-header top-left-container">
-                        <h3>Files</h3>
-                    </div>
+                    
                     <div className="preview-files-list middle-left-container">
                         {fileData.length === 0 ? (
                             <div style={{ margin: "10px auto" }}>

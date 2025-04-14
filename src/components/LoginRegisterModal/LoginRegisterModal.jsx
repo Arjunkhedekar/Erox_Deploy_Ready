@@ -2,13 +2,30 @@ import React, { useState } from "react";
 import { assets } from "../../assets/assets";
 import "./LoginRegisterModal.css";
 import IconInputBar from "../IconInputBar/IconInputBar";
+import { signIn } from "../../userAuth";
+import {useAuth} from '../../utils/AuthContext/index';
 
 const LoginRegisterModal = ({ toggleModal }) => {
+   // const { userLoggedIn } = useAuth();
+
    const [isLogin, setIsLogin] = useState(true);
+   const [isSigningIn, setIsSigningIn] = useState(false);
 
    const toggleLoginRegister = () => {
       setIsLogin(!isLogin);
    };
+
+   const onGoogleSignIn = async(e)=>{
+      e.preventDefault();
+      if(!isSigningIn){
+         setIsSigningIn(true);
+         await signIn().catch((error) => {
+            console.error("Error signing in with Google: ", error);
+            setIsSigningIn(false);
+         })
+      }
+      console.log("Google Sign In Clicked")
+   }
 
    return (
       <div className="modal-overlay" onClick={toggleModal}>
@@ -47,7 +64,7 @@ const LoginRegisterModal = ({ toggleModal }) => {
                   <span>OR</span>
                   <div> </div>
                </div>
-               <button>
+               <button onClick={onGoogleSignIn}>
                   <img src={assets.google_logo} alt="" />
                   Sign in with Google
                </button>
