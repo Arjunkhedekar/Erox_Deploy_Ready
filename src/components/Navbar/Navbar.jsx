@@ -3,20 +3,23 @@ import "./Navbar.css";
 import { assets } from "../../assets/assets";
 import { HashLink } from "react-router-hash-link";
 import LoginRegisterModal from "../LoginRegisterModal/LoginRegisterModal";
+import { auth } from "../../userAuth";
+import { signOut } from "firebase/auth";
+
 
 const Navbar = ({ setMenu, menu }) => {
     const [scroll, setScroll] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showLoginRegisterModal, setShowLoginRegisterModal] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScroll(window.scrollY > 0);
-        };
+        // Add auth state listener
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setIsLoggedIn(!!user);
+        });
 
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+        return () => unsubscribe();
     }, []);
 
     const NavLink = ({ to, children }) => {
@@ -37,13 +40,22 @@ const Navbar = ({ setMenu, menu }) => {
         );
     };
 
-    const [showLoginRegisterModal, setShowLoginRegisterModal] = useState(false);
     const toggleLoginRegisterModal = () => {
         setShowLoginRegisterModal(!showLoginRegisterModal);
     };
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            setIsLoggedIn(false);
+            localStorage.removeItem("user"); 
+        } catch (error) {
+            console.error("Error signing out:", error);
+        }
     };
 
     return (
@@ -53,8 +65,16 @@ const Navbar = ({ setMenu, menu }) => {
             </HashLink>
             <div className="navbar-content">
                 <div id="navbar-btn">
-                    <button onClick={toggleLoginRegisterModal}>LOGIN</button>
-                    {showLoginRegisterModal && (
+                    {isLoggedIn ? (
+                        <button className="logout-btn" onClick={handleLogout}>
+                            LOGOUT
+                        </button>
+                    ) : (
+                        <button onClick={toggleLoginRegisterModal}>
+                            LOGIN
+                        </button>
+                    )}
+                    {showLoginRegisterModal && !isLoggedIn && (
                         <LoginRegisterModal
                             toggleModal={toggleLoginRegisterModal}
                         />

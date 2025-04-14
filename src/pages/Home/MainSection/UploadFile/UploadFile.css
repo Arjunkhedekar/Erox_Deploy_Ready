@@ -94,6 +94,36 @@
    font-weight: 400;
 }
 
+.file-item {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 5px 10px;
+   margin-bottom: 5px;
+}
+
+.remove-file-btn {
+   background: none;
+   border: none;
+   color: #ff4444;
+   cursor: pointer;
+   padding: 0 5px;
+   font-size: 16px;
+   font-weight: bold;
+   opacity: 0.7;
+   transition: opacity 0.2s;
+}
+
+.remove-file-btn:hover {
+   opacity: 1;
+}
+
+#file-list ul {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
 
 @media screen and (max-width: 768px) {
    #upload-file {
