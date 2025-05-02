@@ -22,6 +22,23 @@ const Navbar = ({ setMenu, menu }) => {
         return () => unsubscribe();
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScroll(true);
+            } else {
+                setScroll(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Cleanup listener
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const NavLink = ({ to, children }) => {
         return (
             <li
