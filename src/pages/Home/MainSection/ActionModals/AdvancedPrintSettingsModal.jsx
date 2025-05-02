@@ -54,7 +54,7 @@ const AdvancedPrintSettingsModal = ({
                     onClick={toggleModal}
                     className="close-button"
                 />
-                <h2>Settings Dialog</h2>
+                {/* <h2>Settings Dialog</h2> */}
                 <div id="settings-big-modal-inner">
                     
                     <div className="preview-files-list middle-left-container">

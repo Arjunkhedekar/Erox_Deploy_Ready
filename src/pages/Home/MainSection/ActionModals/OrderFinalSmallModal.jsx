@@ -5,6 +5,8 @@ import {
     disableBodyScroll,
     enableBodyScroll,
 } from "../../../../utils/modalUtils";
+import { db } from "../../../../firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import sendRequestToBackend from "../../print";
 
 const OrderFinalSmallModal = ({ toggleModal }) => {
@@ -28,7 +30,7 @@ const OrderFinalSmallModal = ({ toggleModal }) => {
         setSelectedOrder(orderId);
     };
 
-    const handleClearOrder = () => {
+    const handleClearOrder = async () => {
         if (selectedOrder) {
             const updatedOrders = {
                 ...JSON.parse(localStorage.getItem("orderIdNo")),

@@ -57,7 +57,7 @@
    color: #ffffff;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1080px) {
    .useful-links {
       display: none;
    }

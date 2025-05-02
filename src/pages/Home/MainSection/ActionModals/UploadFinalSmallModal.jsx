@@ -39,7 +39,11 @@ const UploadFinalSmallModal = ({
         });
         orderIdArray = { [orderIdNo]: [...orderfilenames] };
 
-        if (!localStorage.getItem("userid")) {
+        const isLoggedIn = localStorage
+            .getItem("user")
+            .split('"')[1]
+            .split('"')[0];
+        if (!isLoggedIn) {
             localStorage.setItem("userid", uuidv4());
         }
 
@@ -49,7 +53,7 @@ const UploadFinalSmallModal = ({
         const uploadPromises = fileData.map(async (eachfile) => {
             try {
                 let filename = eachfile.file.name;
-                let uid = userid;
+                let uid = isLoggedIn ? isLoggedIn : userid;
                 const storageref = ref(storage, `${uid}/${orderIdNo}`);
                 const storageref2 = ref(storageref, `${filename}`);
                 const metadata = {
@@ -121,13 +125,18 @@ const UploadFinalSmallModal = ({
                         <button
                             disabled={!fileData || fileData.length === 0}
                             onClick={async (e) => {
-                                if (proceedOption === "Upload and Print Later") {
+                                if (
+                                    proceedOption === "Upload and Print Later"
+                                ) {
                                     await handleUpload(e);
                                 }
                                 if (proceedOption === "Print and Store") {
                                     await handleUpload(e);
-                                    const orderIdNo = Object.keys(orderIdArray)[0];
-                                    const userId = localStorage.getItem("userid");
+                                    const orderIdNo =
+                                        Object.keys(orderIdArray)[0];
+                                    const userId = isLoggedIn
+                                        ? isLoggedIn
+                                        : localStorage.getItem("userid");
                                     const filenames = orderIdArray[orderIdNo];
                                     const metadata = {
                                         ...globalMetadata,
@@ -142,7 +151,9 @@ const UploadFinalSmallModal = ({
                                     toggleModal();
                                 }
                             }}>
-                            {!fileData || fileData.length === 0 ? 'No Files Selected' : 'Upload'}
+                            {!fileData || fileData.length === 0
+                                ? "No Files Selected"
+                                : "Upload"}
                         </button>
                     </div>
                 </div>
