@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FinalSmallModals.css";
 import { assets } from "../../../../assets/assets";
 import { ToggleButtonGroup } from "../PrintSettings/PrintSettings";
@@ -17,45 +17,55 @@ const UploadFinalSmallModal = ({
     globalMetadata,
     fileMetadata,
 }) => {
-    React.useEffect(() => {
+    const [proceedOption, setProceedOption] = useState("Upload and Print Later");
+    const [uploadProgress, setUploadProgress] = useState({});
+    const [displayProgress, setDisplayProgress] = useState(0);
+    const [uploading, setUploading] = useState(false);
+    const [orderIdArray, setOrderIdArray] = useState({});
+    const [uploadSuccess, setUploadSuccess] = useState(false);
+
+    useEffect(() => {
         disableBodyScroll();
         return () => {
             enableBodyScroll();
         };
     }, []);
 
-    const [proceedOption, setProceedOption] = useState(
-        "Upload and Print Later"
-    );
-    let orderIdArray = {};
+    // Calculate smooth average progress
+    useEffect(() => {
+        const frame = requestAnimationFrame(() => {
+            const progressValues = Object.values(uploadProgress);
+            const totalProgress =
+                progressValues.reduce((a, b) => a + b, 0) /
+                (progressValues.length || 1);
+            setDisplayProgress((prev) =>
+                prev + (totalProgress - prev) * 0.2
+            );
+        });
+
+        return () => cancelAnimationFrame(frame);
+    }, [uploadProgress]);
 
     async function handleUpload(event) {
         event.preventDefault();
+        setUploading(true);
+        setUploadSuccess(false); // Reset success state
 
         const orderIdNo = Math.random().toString(36).substring(2, 8);
+        const filenames = fileData.map((item) => item.file.name);
+        const newOrderIdEntry = { [orderIdNo]: filenames };
+        setOrderIdArray(newOrderIdEntry);
 
-        let orderfilenames = fileData.map((item) => {
-            return item.file.name;
-        });
-        orderIdArray = { [orderIdNo]: [...orderfilenames] };
-
-        const isLoggedIn = localStorage
-            .getItem("user")
-            .split('"')[1]
-            .split('"')[0];
+        const isLoggedIn = localStorage.getItem("user")?.split('"')[1] || null;
         if (!isLoggedIn) {
             localStorage.setItem("userid", uuidv4());
         }
+        const uid = isLoggedIn || localStorage.getItem("userid");
 
-        const userid = localStorage.getItem("userid");
-
-        // Create an array of promises for all file uploads
-        const uploadPromises = fileData.map(async (eachfile) => {
-            try {
-                let filename = eachfile.file.name;
-                let uid = isLoggedIn ? isLoggedIn : userid;
-                const storageref = ref(storage, `${uid}/${orderIdNo}`);
-                const storageref2 = ref(storageref, `${filename}`);
+        const uploadPromises = fileData.map((eachfile) => {
+            return new Promise((resolve, reject) => {
+                const filename = eachfile.file.name;
+                const storageRef = ref(storage, `${uid}/${orderIdNo}/${filename}`);
                 const metadata = {
                     contentType: "application/pdf",
                     customMetadata: {
@@ -66,35 +76,44 @@ const UploadFinalSmallModal = ({
                     },
                 };
 
-                await uploadBytesResumable(
-                    storageref2,
-                    eachfile.file,
-                    metadata
+                const uploadTask = uploadBytesResumable(storageRef, eachfile.file, metadata);
+
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                        const progress =
+                            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        setUploadProgress((prev) => ({
+                            ...prev,
+                            [filename]: progress,
+                        }));
+                    },
+                    (error) => {
+                        console.error("Upload error:", error);
+                        reject(error);
+                    },
+                    () => {
+                        setUploadProgress((prev) => ({
+                            ...prev,
+                            [filename]: 100,
+                        }));
+                        resolve();
+                    }
                 );
-                console.log("DONE");
-            } catch (error) {
-                console.log("this is in catch block");
-                console.error(error);
-                throw error; // Re-throw to handle in the caller
-            }
+            });
         });
 
         try {
-            // Wait for all uploads to complete
             await Promise.all(uploadPromises);
 
-            // Update localStorage
-            if (!localStorage.getItem("orderIdNo")) {
-                localStorage.setItem("orderIdNo", JSON.stringify(orderIdArray));
-            } else {
-                let pendingids = JSON.parse(localStorage.getItem("orderIdNo"));
-                pendingids = { ...pendingids, ...orderIdArray };
-                localStorage.setItem("orderIdNo", JSON.stringify(pendingids));
-            }
+            const existing = JSON.parse(localStorage.getItem("orderIdNo")) || {};
+            localStorage.setItem("orderIdNo", JSON.stringify({ ...existing, ...newOrderIdEntry }));
 
-            // Close the modal after successful upload
-            toggleModal();
+            setUploading(false);
+            setUploadSuccess(true); // Set success state instead of closing modal
         } catch (error) {
+            setUploading(false);
+            setUploadSuccess(false);
             console.error("Upload failed:", error);
         }
     }
@@ -120,39 +139,49 @@ const UploadFinalSmallModal = ({
                             selected={proceedOption}
                             onSelect={(choice) => setProceedOption(choice)}
                         />
+
+                        {uploading && (
+                            <div className="upload-progress">
+                                <p>Uploading files...</p>
+                                <progress
+                                    value={displayProgress}
+                                    max="100"
+                                />
+                                <span>{displayProgress.toFixed(0)}%</span>
+                            </div>
+                        )}
+
+                        {uploadSuccess && (
+                            <div className="upload-success">
+                                <p>✅ Files uploaded successfully!</p>
+                                <p>You can now close this window or upload more files.</p>
+                            </div>
+                        )}
                     </div>
                     <div className="modal-footer">
                         <button
-                            disabled={!fileData || fileData.length === 0}
+                            disabled={!fileData || fileData.length === 0 || uploading}
                             onClick={async (e) => {
-                                if (
-                                    proceedOption === "Upload and Print Later"
-                                ) {
+                                if (proceedOption === "Upload and Print Later") {
                                     await handleUpload(e);
                                 }
                                 if (proceedOption === "Print and Store") {
                                     await handleUpload(e);
-                                    const orderIdNo =
-                                        Object.keys(orderIdArray)[0];
-                                    const userId = isLoggedIn
-                                        ? isLoggedIn
-                                        : localStorage.getItem("userid");
+                                    const orderIdNo = Object.keys(orderIdArray)[0];
+                                    const userId = localStorage.getItem("user")?.split('"')[1] || localStorage.getItem("userid");
                                     const filenames = orderIdArray[orderIdNo];
                                     const metadata = {
                                         ...globalMetadata,
                                         ...fileMetadata,
                                     };
-                                    await sendRequestToBackend(
-                                        orderIdNo,
-                                        userId,
-                                        filenames,
-                                        metadata
-                                    );
-                                    toggleModal();
+                                    await sendRequestToBackend(orderIdNo, userId, filenames, metadata);
                                 }
-                            }}>
+                            }}
+                        >
                             {!fileData || fileData.length === 0
                                 ? "No Files Selected"
+                                : uploading
+                                ? "Uploading..."
                                 : "Upload"}
                         </button>
                     </div>
