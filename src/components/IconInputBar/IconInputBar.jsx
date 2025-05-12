@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./IconInputBar.css";
+// import "./IconInputBar.css";
 
 const IconInputBar = ({ placeholder, type, icon, toggleIcon }) => {
    const [inputType, setInputType] = useState(type);
@@ -11,15 +11,19 @@ const IconInputBar = ({ placeholder, type, icon, toggleIcon }) => {
    };
 
    return (
-      <div className="icon-input-bar">
-         <input type={inputType} placeholder={placeholder} />
-         <img src={icon} alt="" />
+      <div className="relative w-[70%] h-[50px] mx-auto">
+         <input
+            type={inputType}
+            placeholder={placeholder}
+            className="w-full h-full pl-[20px] pr-[50px] border-none rounded-md focus:outline-none placeholder:text-[#858585] placeholder:font-medium"
+         />
+         <img src={icon} alt="" className="absolute top-1/2 right-[15px] transform -translate-y-1/2" />
          {type === "password" && (
             <img
                src={toggleIcon}
                alt="toggle visibility"
                onClick={handleToggle}
-               className="toggle-icon"
+               className="absolute top-1/2 right-[15px] transform -translate-y-1/2 cursor-pointer"
             />
          )}
       </div>
@@ -27,3 +31,4 @@ const IconInputBar = ({ placeholder, type, icon, toggleIcon }) => {
 };
 
 export default IconInputBar;
+

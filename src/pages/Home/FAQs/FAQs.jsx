@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FAQs.css";
+// import "./FAQs.css";
 import FAQItem from "./FAQItem";
 
 
@@ -62,9 +62,11 @@ const FAQs = () => {
    };
 
    return (
-      <div id="faqs-section">
-         <h1>FAQs</h1>
-         <div id="faq-items">
+      <div className="faqs-section px-4 py-8 mx-auto">
+         <h1 className="text-6xl font-bold sm:text-5xl md:text-6xl text-center">
+            FAQs
+         </h1>
+         <div className="faq-items flex flex-col gap-4 mt-4">
             {faqs.map((faq, index) => (
                <FAQItem
                   key={index}
