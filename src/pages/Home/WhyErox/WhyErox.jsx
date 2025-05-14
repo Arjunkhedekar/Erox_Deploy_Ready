@@ -1,6 +1,6 @@
 import React from "react";
 import { assets } from "../../../assets/assets";
-import "./WhyErox.css";
+// import "./WhyErox.css";
 import WhyEroxItem from "./WhyEroxItem";
 
 const WhyErox = () => {
@@ -32,16 +32,22 @@ const WhyErox = () => {
    ];
 
    return (
-      <div id="why-erox-section">
-         <h1>
-            WHY <span>EroxPrints?</span>
+      <div className="relative flex flex-col items-center my-[200px] mb-[100px] p-5 gap-12">
+         <h1 className="font-inter text-4xl md:text-[50px] font-bold text-[#1b1b1b]">
+            WHY <span className="text-[#0092e4]">EroxPrints?</span>
          </h1>
-         <div id="why-erox-items">
+         
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-[80%] md:w-[92%] mx-auto">
             {whyEroxList.map((item, index) => (
                <WhyEroxItem key={index} icon={item.icon} title={item.title} />
             ))}
          </div>
-         <img src={assets.home_blob_whyerox} alt="" id="home-blob-whyerox" />
+         
+         <img 
+            src={assets.home_blob_whyerox} 
+            alt="Decorative blob background" 
+            className="absolute top-1/2 left-0 -translate-y-1/2 -z-10 w-[400px] md:w-auto"
+         />
       </div>
    );
 };

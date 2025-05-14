@@ -1,52 +1,52 @@
 /* Fonts are imported in public/index.html */
-
+@import "tailwindcss";
 * {
-    padding: 0;
+    /* padding: 0;
     margin: 0;
-    box-sizing: border-box;
- }
- 
- html {
+    box-sizing: border-box; */
+}
+
+html {
     scroll-behavior: smooth;
- }
- 
- body {
+}
+
+body {
     min-height: 100vh;
     background-color: #f2fcff;
- }
- 
- a {
+}
+
+a {
     text-decoration: none;
     color: inherit;
- }
- 
- img {
+}
+
+img {
     user-select: none;
- }
- 
- button,
- a {
+}
+
+button,
+a {
     cursor: pointer;
- }
- 
- /* Scrollbar */
- ::-webkit-scrollbar {
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
     width: 0.7rem;
     border-radius: 0.3rem;
     background-color: hsl(0, 0%, 80%);
- }
- 
- ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     background-color: hsl(0, 0%, 60%);
     border-radius: 0.3rem;
- }
- 
- ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background-color: hsl(0, 0%, 40%);
- }
- 
+}
+
 @media screen and (max-width: 1080px) {
-   .paperplane-svg{
-      display: none;
-   }
+    .paperplane-svg {
+        display: none;
+    }
 }

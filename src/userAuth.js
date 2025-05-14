@@ -12,7 +12,8 @@ export const auth = getAuth(app);
 
 export const signIn = async() => {
     const user = await signInWithPopup(auth, provider)
-    localStorage.setItem("user", JSON.stringify(user.user.uid));
+    console.log(typeof user.user.uid);
+    localStorage.setItem("user", user.user.uid);
     return user;
 }; 
 
