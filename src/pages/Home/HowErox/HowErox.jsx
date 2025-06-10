@@ -45,15 +45,15 @@ const HowErox = () => {
                     key={index}
                     title={step.title}
                     description={step.description}
-                    className={`relative z-[1] w-[70%] md:w-[60%] mb-5 lg:w-[34%] ${
-                        index === 0
-                            ? ""
-                            : index === 1
-                            ? ""
-                            : index === 2
-                            ? ""
-                            : ""
-                    }`}
+                    className={`relative z-[1] w-[70%] md:w-[34%] ${
+             index === 0
+               ? "md:absolute md:top-[13%] md:left-[32%]"
+               : index === 1
+                 ? "md:absolute md:top-[34%] md:left-[35%]"
+                 : index === 2
+                   ? "md:absolute md:top-[56%] md:left-[30%]"
+                   : "md:absolute md:top-[84%] md:left-[33%]"
+           }`}
                 />
             ))}
 
