@@ -131,7 +131,7 @@ const Navbar = ({ setMenu, menu }) => {
                         </button>
                     ) : (
                         <button
-                            className="bg-[#dc2f02] text-white font-inter text-lg font-semibold py-2.5 px-7 rounded-lg"
+                            className="bg-green-500 text-white font-inter text-lg font-semibold py-2.5 px-7 rounded-lg"
                             onClick={handleLogout}>
                             LOGOUT
                         </button>

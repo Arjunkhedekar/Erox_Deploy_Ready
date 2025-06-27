@@ -94,6 +94,7 @@ const OrderFinalSmallModal = ({ toggleModal }) => {
             try {
                 // Update last printed timestamp
                 const orderRef = doc(db, `users/${userId}/orders`, selectedOrder);
+                // console.log("!!!")
                 await setDoc(orderRef, {
                     lastPrinted: new Date().toISOString()
                 }, { merge: true });
